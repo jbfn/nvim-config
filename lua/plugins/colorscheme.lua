@@ -23,12 +23,24 @@ return {
     hl(0, "ColorColumn", { bg = "#1f2130" })
 
     -- Override default capture group colours
-
+    hl(0, "ParamBlue", { fg = "#9CDCFE" })
     hl(0, "ClassGreen", { fg = "#4EC9B0" })
+
+    -- Generic
+    hl(0, "@variable.parameter", { link = "ParamBlue" })
+    hl(0, "@lsp.type.parameter", { link = "ParamBlue" })
+    hl(0, "@lsp.type.class", { link = "ClassGreen" })
+    hl(0, "@lsp.type.namespace", { link = "ClassGreen" })
+
+    hl(0, "@lsp.type.parameter", { link = "ParamBlue" })
+    hl(0, "@variable.parameter", { link = "ParamBlue" })
+    hl(0, "@variable.member", { link = "ParamBlue" })
+    hl(0, "@variable", { link = "ParamBlue" })
+
+    -- Python
     hl(0, "@lsp.type.class.python", { link = "ClassGreen" })
     hl(0, "@lsp.type.namespace.python", { link = "ClassGreen" })
 
-    hl(0, "ParamBlue", { fg = "#9CDCFE" })
     hl(0, "@lsp.type.parameter.python", { link = "ParamBlue" })
     hl(0, "@variable.parameter.python", { link = "ParamBlue" })
     hl(0, "@variable.member.python", { link = "ParamBlue" })
