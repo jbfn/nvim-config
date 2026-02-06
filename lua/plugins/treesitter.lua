@@ -19,7 +19,7 @@ return {
     -- Start treesitter for custom python capture group highlighting.
     vim.api.nvim_create_autocmd('FileType', {
       desc = "Start treesitter highlighting",
-      pattern = 'python',
+      pattern = { "python", "go" },
       callback = function(args)
         if not ts.highlighter.active[args.buf] then
           ts.start(args.buf, args.match)
