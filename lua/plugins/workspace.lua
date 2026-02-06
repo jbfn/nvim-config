@@ -3,6 +3,9 @@ return {
   config = function()
     local ts = require("telescope")
     local ws = require("workspaces")
+
+    local skip_open_hook = false
+
     ws.setup({
       -- change directory only for the current window
       cd_type = "local",
@@ -19,7 +22,14 @@ return {
       -- hooks to run after specific actions
       hooks = {
         open = function()
-          require("telescope.builtin").find_files()
+          vim.schedule(function()
+            if skip_open_hook then
+              skip_open_hook = false
+              return
+            end
+
+            vim.cmd("Gedit :")
+          end)
         end,
       },
     })
@@ -33,7 +43,9 @@ return {
     )
 
     vim.keymap.set('n', '<leader>en', function()
+      skip_open_hook = true
       ws.open("nvim")
+      require("telescope.builtin").find_files()
     end, { desc = 'Find NeoVim config' })
   end
 }
