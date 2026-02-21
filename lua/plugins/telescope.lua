@@ -4,23 +4,29 @@ return {
     tag = "0.1.8",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
-      defaults = require("telescope.themes").get_ivy {},
-      pickers = {
-        find_files = {
-          hidden = true,
-        },
-        buffers = {
-          mappings = {
-            n = {
-              ["dd"] = require("telescope.actions").delete_buffer,
+    },
+    config = function()
+      local telescope = require("telescope")
+      local builtin = require('telescope.builtin')
+      local themes = require("telescope.themes")
+      local actions = require("telescope.actions")
+      local set = vim.keymap.set
+
+      telescope.setup({
+        defaults = themes.get_ivy {},
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+          buffers = {
+            mappings = {
+              n = {
+                ["dd"] = actions.delete_buffer,
+              }
             }
           }
         }
-      },
-    },
-    init = function()
-      local builtin = require('telescope.builtin')
-      local set = vim.keymap.set
+      })
 
       -- Pure telescope picker keymaps
       set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
