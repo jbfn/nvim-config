@@ -19,7 +19,13 @@ return {
       "williamboman/mason-lspconfig.nvim",
     },
     config = function()
-      local ENABLED_LSPS = { "gopls", "basedpyright", "lua_ls", "jsonls", "bashls" }
+      local ENABLED_LSPS = {
+        --"gopls",
+        "basedpyright",
+        "lua_ls",
+        "jsonls",
+        "bashls"
+      }
 
       require("mason").setup()
       require("mason-lspconfig").setup({
